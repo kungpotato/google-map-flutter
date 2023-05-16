@@ -30,6 +30,30 @@ class _MyHomePageState extends State<MyHomePage> {
       markerId: const MarkerId('custom_marker'),
       position: const LatLng(40.7128, -74.0060), // New York City coordinates
       icon: BitmapDescriptor.fromBytes(markerIcon),
+      onTap: (){
+        showModalBottomSheet<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return Container(
+              height: 200,
+              color: Colors.amber,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const Text('Modal BottomSheet'),
+                    ElevatedButton(
+                      child: const Text('Close BottomSheet'),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      }
     );
     setState(() {
       _markers.add(marker);
